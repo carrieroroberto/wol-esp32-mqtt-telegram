@@ -12,6 +12,7 @@ A **remote Wake-on-LAN (WoL) system** that allows you to power on your PC from a
 - [Hardware Requirements](#hardware-requirements)  
 - [Software Requirements](#software-requirements)  
 - [ESP32 Setup](#esp32-setup)  
+- [Telegram Bot Setup](#telegram-bot)  
 - [Python Services](#python-services)  
 - [Usage](#usage)  
 - [Security Considerations](#security-considerations)  
@@ -72,8 +73,8 @@ const IPAddress PC_IP(0, 0, 0, 0);
 ## Telegram Bot Setup
 
 1. **Create a new bot** via [BotFather](https://t.me/BotFather) on Telegram.  
-2. **Save the `BOT_TOKEN`** provided by BotFather into your `.env` file.  
-3. **Obtain your Telegram user ID** to restrict access to authorized users and set it as `ALLOWED_ID` in `.env`.
+2. **Save the `BOT_TOKEN`** provided by BotFather. This will be needed later in your `.env` file.  
+3. **Obtain your Telegram user ID** to restrict access to authorized users and set it as `ALLOWED_ID` in your `.env` file.
 
 ---
 
