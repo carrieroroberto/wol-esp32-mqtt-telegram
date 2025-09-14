@@ -1,0 +1,8 @@
+# Telegram bot library
+python-telegram-bot
+
+# MQTT client library
+paho-mqtt
+
+# Load environment variables from .env
+python-dotenv
