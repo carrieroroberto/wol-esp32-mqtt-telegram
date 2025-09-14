@@ -14,7 +14,7 @@ A **remote Wake-on-LAN (WoL) system** that allows to power on home PCs from anyw
 - [Software Requirements](#software-requirements)  
 - [ESP32 Setup](#esp32-setup)  
 - [Telegram Bot Setup](#telegram-bot)  
-- [Python Services Setup](#python-services)  
+- [Python Services Setup](#python-services-setup)  
 - [Usage](#usage)  
 - [Security Considerations](#security-considerations)  
 - [Portfolio / CV Benefits](#portfolio--cv-benefits)
