@@ -1,0 +1,3 @@
+fastapi
+paho-mqtt
+python-dotenv
