@@ -20,16 +20,31 @@ A **remote Wake-on-LAN (WoL) system** that allows you to power on your PC from a
 
 ---
 
-graph TD
-    Telegram_Bot[Telegram Bot / HTTP API]
-    MQTT_Broker[MQTT Broker]
-    ESP32[ESP32 Device]
-    Target_PC[Target PC (WoL)]
+      ┌───────────────────────────┐
+      │   Telegram Bot / HTTP API │
+      │  (User triggers commands) │
+      └─────────────┬─────────────┘
+                    │
+                    ▼
+           ┌────────────────┐
+           │   MQTT Broker  │
+           │  (TLS enabled) │
+           └────────┬───────┘
+                    │
+                    ▼
+             ┌─────────────┐
+             │    ESP32    │
+             │  (WiFi +    │
+             │  WoL client)│
+             └─────┬───────┘
+                   │
+                   ▼
+           ┌────────────────┐
+           │   Target PC    │
+           │  (WoL enabled) │
+           └────────────────┘
 
-    Telegram_Bot --> MQTT_Broker
-    MQTT_Broker --> ESP32
-    ESP32 --> Target_PC
-
+---
 
 ## Features
 
