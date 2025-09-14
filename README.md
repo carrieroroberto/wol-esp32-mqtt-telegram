@@ -1,4 +1,4 @@
-# Remote Wake-on-LAN System with ESP32, MQTT & Telegram
+# Remote Wake-on-LAN System with ESP32, MQTT & Telegram Bot
 
 ![ESP32 Wake-on-LAN](https://img.shields.io/badge/ESP32-WoL-blue) ![Python](https://img.shields.io/badge/Python-FastAPI-green) ![MQTT](https://img.shields.io/badge/MQTT-Secure-orange)
 
