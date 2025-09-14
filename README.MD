@@ -71,7 +71,7 @@ const IPAddress PC_IP(0, 0, 0, 0);
 
 ## Python Services
 
-1. Create two `.env` files in your folders.  
+1. Modify `.env` files in both services folders.
 2. Add your credentials:
 
 ### HTTP Wake-On-Lan Trigger Server:
@@ -108,10 +108,12 @@ MQTT_PASS=mqtt_password
 
 **Check PC status:**
 
-- Telegram: `/ping` or `/status`  
-- HTTP API: GET `/ping`  
+- Telegram: `/ping`
 
-**View uptime, IP, and network info** via Telegram `/status`.
+**Check services status:**
+
+- Telegan: `/status`  
+- HTTP API: `/ping`  
 
 ---
 
