@@ -8,6 +8,7 @@ A **remote Wake-on-LAN (WoL) system** that allows you to power on your PC from a
 
 ## Table of Contents
 
+- [Architecture](#architecture)  
 - [Features](#features)  
 - [Hardware Requirements](#hardware-requirements)  
 - [Software Requirements](#software-requirements)  
@@ -19,6 +20,8 @@ A **remote Wake-on-LAN (WoL) system** that allows you to power on your PC from a
 - [Portfolio / CV Benefits](#portfolio--cv-benefits)
 
 ---
+
+## Architecture
 
       ┌───────────────────────────┐
       │   Telegram Bot / HTTP API │
