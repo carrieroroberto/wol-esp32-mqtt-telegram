@@ -69,6 +69,14 @@ const IPAddress PC_IP(0, 0, 0, 0);
 
 ---
 
+## Telegram Bot Setup
+
+1. Create a new bot via BotFather on Telegram.
+2. Save the BOT_TOKEN provided by BotFather.
+3. Obtain your Telegram user ID to restrict access.
+
+---
+
 ## Python Services Setup
 
 1. Modify `.env` files in both services folders.
