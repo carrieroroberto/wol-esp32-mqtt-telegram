@@ -69,7 +69,7 @@ const IPAddress PC_IP(0, 0, 0, 0);
 
 ---
 
-## Python Services
+## Python Services Setup
 
 1. Modify `.env` files in both services folders.
 2. Add your credentials:
@@ -112,7 +112,7 @@ MQTT_PASS=mqtt_password
 
 **Check services status:**
 
-- Telegan: `/status`  
+- Telegram: `/status`  
 - HTTP API: `/ping`  
 
 ---
