@@ -42,7 +42,7 @@ A **remote Wake-on-LAN (WoL) system** that allows you to power on your PC from a
 ## Software Requirements
 
 - **ESP32 Firmware Tools:** Arduino IDE or PlatformIO  
-- **Python 3.10+** for services  
+- **Python 3** for services  
 - Environment-based configuration using `.env` files and `config.h`
 
 ---
@@ -56,13 +56,13 @@ A **remote Wake-on-LAN (WoL) system** that allows you to power on your PC from a
 #define WIFI_SSID "your_wifi_name"
 #define WIFI_PASS "your_wifi_password"
 #define MAC_ADDR "AA:BB:CC:DD:EE:FF"
-const IPAddress PC_IP(192, 168, 1, 100);
+const IPAddress PC_IP(0, 0, 0, 0);
 #define MQTT_HOST "your_mqtt_host"
 #define MQTT_PORT 8883
 #define MQTT_USER "mqtt_user"
 #define MQTT_PASS "mqtt_password"
-#define MQTT_TOPIC_COMMANDS "wol/commands"
-#define MQTT_TOPIC_RESPONSE "wol/response"
+#define MQTT_TOPIC_COMMANDS "your_commands_topic"
+#define MQTT_TOPIC_RESPONSE "your_response_topic"
 ```
 
 3. Upload the firmware to your ESP32 and verify connectivity via Serial Monitor.
@@ -71,16 +71,25 @@ const IPAddress PC_IP(192, 168, 1, 100);
 
 ## Python Services
 
-1. Create a `.env` file in your Python project folder.  
+1. Create two `.env` files in your folders.  
 2. Add your credentials:
 
+### HTTP Wake-On-Lan Trigger Server:
+```bash
+MQTT_HOST=your_mqtt_host
+MQTT_PORT=8883
+MQTT_TOPIC_COMMANDS=your_commands_topic
+MQTT_USER=mqtt_user
+MQTT_PASS=mqtt_password
+```
+
+### Telegram Bot:
 ```bash
 BOT_TOKEN=your_telegram_bot_token
 ALLOWED_ID=your_telegram_user_id
 MQTT_HOST=your_mqtt_host
 MQTT_PORT=8883
-MQTT_TOPIC_COMMANDS=wol/commands
-MQTT_TOPIC_RESPONSE=wol/response
+MQTT_TOPIC_COMMANDS=your_commands_topic
 MQTT_USER=mqtt_user
 MQTT_PASS=mqtt_password
 ```
