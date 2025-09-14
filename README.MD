@@ -52,6 +52,8 @@ A **remote Wake-on-LAN (WoL) system** that allows you to power on your PC from a
 1. Open `config.h` in your firmware directory.  
 2. Modify the following lines with your personal information:
 
+```bash
+# config.h
 #define WIFI_SSID "your_wifi_name"
 #define WIFI_PASS "your_wifi_password"
 #define MAC_ADDR "AA:BB:CC:DD:EE:FF"
@@ -63,7 +65,6 @@ const IPAddress PC_IP(192, 168, 1, 100);
 #define MQTT_TOPIC_COMMANDS "wol/commands"
 #define MQTT_TOPIC_RESPONSE "wol/response"
 
-
 3. Upload the firmware to your ESP32 and verify connectivity via Serial Monitor.
 
 ---
@@ -73,6 +74,8 @@ const IPAddress PC_IP(192, 168, 1, 100);
 1. Create a `.env` file in your Python project folder.  
 2. Add your credentials:
 
+```bash
+# .env
 BOT_TOKEN=your_telegram_bot_token
 ALLOWED_ID=your_telegram_user_id
 MQTT_HOST=your_mqtt_host
@@ -81,7 +84,6 @@ MQTT_TOPIC_COMMANDS=wol/commands
 MQTT_TOPIC_RESPONSE=wol/response
 MQTT_USER=mqtt_user
 MQTT_PASS=mqtt_password
-
 
 3. Run the FastAPI service to trigger WoL via HTTP.  
 4. Run the Telegram bot to interact with ESP32 via MQTT.  
