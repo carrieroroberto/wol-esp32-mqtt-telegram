@@ -2,7 +2,7 @@
 
 ![ESP32 Wake-on-LAN](https://img.shields.io/badge/ESP32-WoL-blue) ![Python](https://img.shields.io/badge/Python-FastAPI-green) ![MQTT](https://img.shields.io/badge/MQTT-Secure-orange)
 
-A **remote Wake-on-LAN (WoL) system** that allows to power on home PCs from anywhere in the world using an **ESP32 microcontroller**, **MQTT**, and either **Telegram bot** or **HTTP API**.
+A **remote Wake-on-LAN (WoL) system** that allows powering on home PCs from anywhere in the world using an **ESP32 microcontroller**, **MQTT**, and either **Telegram bot** or **HTTP API**.
 
 ---
 
