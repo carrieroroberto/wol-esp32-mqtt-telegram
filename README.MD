@@ -9,7 +9,6 @@ A **remote Wake-on-LAN (WoL) system** that allows you to power on your PC from a
 ## Table of Contents
 
 - [Features](#features)  
-- [Architecture](#architecture)  
 - [Hardware Requirements](#hardware-requirements)  
 - [Software Requirements](#software-requirements)  
 - [ESP32 Setup](#esp32-setup)  
@@ -25,34 +24,10 @@ A **remote Wake-on-LAN (WoL) system** that allows you to power on your PC from a
 - 🔌 **Remote Wake-on-LAN:** Power on your PC from anywhere.  
 - 📊 **Real-time PC status:** Check if the PC is online and receive uptime info.  
 - 💬 **Telegram Bot Integration:** Interact easily with `/wol`, `/ping`, `/status` commands.  
-- 🌐 **HTTP API Endpoint:** Trigger WoL via FastAPI REST calls.  
+- 🌐 **HTTP API Endpoint:** Trigger WoL via REST calls.  
 - 🔒 **Secure MQTT Communication:** TLS-enabled broker for global access.  
-- 🛠 **Modular & Deploy-Ready:** ESP32 firmware, Python services, and environment-based config.
+- 🛠 **Modular & Deploy-Ready:** Firmware, Python services, and environment-based configuration.
 
----
-
-## Architecture
-  
-  ┌────────────┐
-  │  Telegram  │
-  │   Bot /    │
-  │  HTTP API  │
-  └─────┬──────┘
-        │ MQTT Commands (/wol, /ping, /status)
-        ▼
-   ┌───────────┐        ┌─────────────┐
-   │  MQTT     │ <----> │ ESP32       │
-   │ Broker    │        │ (WiFi + WoL)│
-   └─────┬─────┘        └─────┬───────┘
-         │                     │
-         │                     ▼
-         │            Magic Packet over LAN
-         │                     │
-         ▼                     ▼
-    Python Services       Target PC
-(Telegram & HTTP)          Powers On
-
-  
 ---
 
 ## Hardware Requirements
@@ -60,43 +35,23 @@ A **remote Wake-on-LAN (WoL) system** that allows you to power on your PC from a
 - **ESP32 Development Board** (WiFi-enabled)  
 - **Target PC** supporting Wake-on-LAN (WoL) in BIOS/UEFI  
 - WiFi network accessible by ESP32  
-- Optional: Cloud server or VPS to run Python Telegram Bot / FastAPI HTTP service
+- Optional: Cloud server or VPS to run Python Telegram Bot / HTTP service
 
 ---
 
 ## Software Requirements
 
-### ESP32 Firmware
+- **ESP32 Firmware Tools:** Arduino IDE or PlatformIO  
+- **Python 3.10+** for services  
+- Environment-based configuration using `.env` files and `config.h`
 
-- Arduino IDE or PlatformIO  
-- Libraries: `WiFi`, `WiFiUdp`, `PubSubClient`, `WakeOnLan`, `ESPping`
+---
 
-### Python Services
+## ESP32 Setup
 
-- Python 3.10+  
-- Packages:
+1. Open `config.h` in your firmware directory.  
+2. Modify the following lines with your personal information:
 
-```bash
-fastapi
-paho-mqtt
-python-dotenv
-python-telegram-bot
-
-.env file with credentials:
-BOT_TOKEN=
-ALLOWED_ID=
-MQTT_HOST=
-MQTT_PORT=8883
-MQTT_TOPIC_COMMANDS=
-MQTT_TOPIC_RESPONSE=
-MQTT_USER=
-MQTT_PASS=
-
-ESP32 Setup
-
-Clone the repository and open wol_esp32_telegram_v4.ino in Arduino IDE.
-
-Modify config.h with your WiFi, MQTT, and WoL PC info:
 #define WIFI_SSID "your_wifi_name"
 #define WIFI_PASS "your_wifi_password"
 #define MAC_ADDR "AA:BB:CC:DD:EE:FF"
@@ -108,45 +63,49 @@ const IPAddress PC_IP(192, 168, 1, 100);
 #define MQTT_TOPIC_COMMANDS "wol/commands"
 #define MQTT_TOPIC_RESPONSE "wol/response"
 
-Upload to ESP32 and open Serial Monitor to verify connectivity.
 
-Python Services
-FastAPI HTTP Trigger
+3. Upload the firmware to your ESP32 and verify connectivity via Serial Monitor.
 
-fastapi_wol.py exposes endpoints /wol and /ping.
+---
 
-Example usage:
-curl http://localhost:8000/wol
-curl http://localhost:8000/ping
+## Python Services
 
-Publishes MQTT commands securely via TLS.
+1. Create a `.env` file in your Python project folder.  
+2. Add your credentials:
 
-Telegram Bot
+BOT_TOKEN=your_telegram_bot_token
+ALLOWED_ID=your_telegram_user_id
+MQTT_HOST=your_mqtt_host
+MQTT_PORT=8883
+MQTT_TOPIC_COMMANDS=wol/commands
+MQTT_TOPIC_RESPONSE=wol/response
+MQTT_USER=mqtt_user
+MQTT_PASS=mqtt_password
 
-telegram_wol_bot.py listens to Telegram commands (/wol, /ping, /status) and forwards them to ESP32 via MQTT.
 
-Responses are displayed in Telegram with status and uptime info.
+3. Run the FastAPI service to trigger WoL via HTTP.  
+4. Run the Telegram bot to interact with ESP32 via MQTT.  
 
-Usage
+---
 
-Turn on PC remotely:
+## Usage
 
-Via Telegram: /wol
+**Turn on PC remotely:**
 
-Via HTTP API: GET /wol
+- Telegram: `/wol`  
+- HTTP API: GET `/wol`  
 
-Check PC status:
+**Check PC status:**
 
-Telegram: /ping or /status
+- Telegram: `/ping` or `/status`  
+- HTTP API: GET `/ping`  
 
-HTTP: GET /ping
+**View uptime, IP, and network info** via Telegram `/status`.
 
-View uptime, IP, and network info in Telegram via /status.
+---
 
-Security Considerations
+## Security Considerations
 
-MQTT connection uses TLS encryption.
-
-Telegram bot restricts access to ALLOWED_ID.
-
-Never commit real credentials; use .env or config.h safely.
+- MQTT connection uses TLS encryption.  
+- Telegram bot access is restricted to authorized users (ALLOWED_ID).  
+- Always use `.env` and `config.h` for credentials; **never commit them publicly**.
