@@ -20,6 +20,9 @@ A **remote Wake-on-LAN (WoL) system** that allows you to power on your PC from a
 
 ---
 
+<div align="center">
+
+<pre>
       ┌───────────────────────────┐
       │   Telegram Bot / HTTP API │
       │  (User triggers commands) │
@@ -43,6 +46,9 @@ A **remote Wake-on-LAN (WoL) system** that allows you to power on your PC from a
            │   Target PC    │
            │  (WoL enabled) │
            └────────────────┘
+</pre>
+
+</div>
 
 ---
 
