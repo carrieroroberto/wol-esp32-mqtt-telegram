@@ -4,7 +4,7 @@
 
 A **remote Wake-on-LAN (WoL) system** that allows powering on home PCs from anywhere in the world using an **ESP32 microcontroller**, **MQTT**, and either **Telegram bot** or **HTTP API**.
 
-![Immagine WhatsApp 2025-10-19 ore](https://github.com/user-attachments/assets/c5233cba-2a80-494a-99ce-af0caf9d86dd)
+<img src="https://github.com/user-attachments/assets/c5233cba-2a80-494a-99ce-af0caf9d86dd" alt="Immagine WhatsApp 2025-10-19 ore" width="500">
 
 ---
 
